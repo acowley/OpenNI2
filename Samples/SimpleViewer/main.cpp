@@ -74,6 +74,13 @@ int main(int argc, char** argv)
 	{
 		printf("SimpleViewer: Couldn't find color stream:\n%s\n", openni::OpenNI::getExtendedError());
 	}
+        openni::VideoMode vmColor = color.getVideoMode();
+        vmColor.setResolution(320, 240);
+        color.setVideoMode(vmColor);
+
+        openni::VideoMode vmDepth = depth.getVideoMode();
+        vmDepth.setResolution(320, 240);
+        depth.setVideoMode(vmDepth);
 
 	if (!depth.isValid() || !color.isValid())
 	{
